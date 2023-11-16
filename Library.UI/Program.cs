@@ -1,4 +1,6 @@
 using Autofac;
+using Library.BusinessLayer.Abstract;
+using Library.BusinessLayer.Concrete;
 using Library.DataLayer.Context;
 using Library.DataLayer.Repositories.Concrete.EntityTypeRepository;
 using Library.DataLayer.Repositories.Interfaces.EntityTypeRepository;
@@ -9,18 +11,18 @@ namespace Library.UI
     internal static class Program
     {
         public static IContainer Container;
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Container = Configure();
             Application.Run(new XtraHome(
-                Container.Resolve<ICategoryRepository>()
+                Container.Resolve<IAuthorService>(),
+                Container.Resolve<IBookService>(),
+                Container.Resolve<ICategoryService>(),
+                Container.Resolve<IEmailService>(),
+                Container.Resolve<IMemberService>(),
+                Container.Resolve<IPublishingHouseService>()
                 ));
         }
 
@@ -38,7 +40,23 @@ namespace Library.UI
             // Register ApplicationDbContext
             builder.RegisterType<ApplicationDbContext>().AsSelf();
 
+            builder.RegisterType<AuthorManager>().As<IAuthorService>();
+            builder.RegisterType<AuthorRepository>().As<IAuthorRepository>();
+
+            builder.RegisterType<BookManager>().As<IBookService>();
+            builder.RegisterType<BookRepository>().As<IBookRepository>();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>();
             builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
+
+            builder.RegisterType<EmailManager>().As<IEmailService>();
+            builder.RegisterType<EmailRepository>().As<IEmailRepository>();
+
+            builder.RegisterType<MemberManager>().As<IMemberService>();
+            builder.RegisterType<MemberRepository>().As<IMemberRepository>();
+
+            builder.RegisterType<PublishingHouseManager>().As<IPublishingHouseService>();
+            builder.RegisterType<PublishingHouseRepository>().As<IPublishingHouseRepository>();
 
             builder.RegisterType<XtraHome>();
             return builder.Build();

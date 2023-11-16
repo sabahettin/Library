@@ -12,8 +12,16 @@ namespace Library.DataLayer.Repositories.Concrete.EntityTypeRepository
 {
     public class AuthorRepository : BaseRepository<Author>, IAuthorRepository
     {
-        public AuthorRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
+        private readonly ApplicationDbContext _dbContext;
+        public AuthorRepository(ApplicationDbContext applicationDbContext, ApplicationDbContext dbContext) : base(applicationDbContext)
         {
+            _dbContext = dbContext;
+        }
+
+        public bool CheckAuthortUses(int authorId)
+        {
+            var result = _dbContext.Books.Where(x => x.authorId == authorId);
+            return (result.Count() > 0 ? false : true);
         }
     }
 }

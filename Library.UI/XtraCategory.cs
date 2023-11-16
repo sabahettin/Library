@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using Library.BusinessLayer.Abstract;
 using Library.DataLayer.Repositories.Interfaces.EntityTypeRepository;
 using Library.EntityLayer.Concrete;
 using System;
@@ -15,13 +16,15 @@ namespace Library.UI
 {
     public partial class XtraCategory : DevExpress.XtraEditors.XtraForm
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryService _categoryService;
         int _id;
-        public XtraCategory(ICategoryRepository categoryRepository)
+
+        public XtraCategory(ICategoryService categoryService)
         {
             InitializeComponent();
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
         }
+
         private void XtraCategory_Load(object sender, EventArgs e)
         {
             List();
@@ -34,7 +37,7 @@ namespace Library.UI
         }
         void List()
         {
-            var list = _categoryRepository.GetAll();
+            var list = _categoryService.TGetAll();
             gridControl1.DataSource = list.ToList();
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -56,16 +59,16 @@ namespace Library.UI
                 Category category = new Category();
                 category.categoryName = txtCategoryName.Text;
                 category.categoryCode = Guid.NewGuid();
-                _categoryRepository.Create(category);
+                _categoryService.TCreate(category);
                 Clear();
                 List();
                 XtraMessageBox.Show("Kategori Başarıyla Eklendi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                var category = _categoryRepository.GetById(_id);
+                var category = _categoryService.TGetById(_id);
                 category.categoryName = txtCategoryName.Text.ToUpper();
-                _categoryRepository.Update(category);
+                _categoryService.TUpdate(category);
                 Clear();
                 List();
                 XtraMessageBox.Show("Kategori Başarıyla Güncellendi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -77,7 +80,7 @@ namespace Library.UI
             if (e.RowHandle >= 0)
             {
                 _id = int.Parse((gridView1.GetRowCellValue(e.RowHandle, "categoryId")).ToString());
-                var deger = _categoryRepository.GetById(_id);
+                var deger = _categoryService.TGetById(_id);
                 txtCategoryName.Text = deger.categoryName;
                 btnSave.Text = "GÜNCELLE";
                 btnClose.Text = "VAZGEÇ";
@@ -88,7 +91,7 @@ namespace Library.UI
             if (XtraMessageBox.Show($"{(gridView1.GetFocusedRow() as Category).categoryName} Departmanını Silmek İstiyor Musunuz?", "Sil?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 var category = (gridView1.GetFocusedRow() as Category);
-                _categoryRepository.Delete(category);
+                _categoryService.TDelete(category);
                 List();
             }
         }

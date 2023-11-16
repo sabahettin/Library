@@ -18,6 +18,9 @@ namespace Library.EntityLayer.Concrete
         public string bookPicture { get; set; }
         public string description { get; set; }
         public int bookCount { get; set; }
+        public int categoryId { get; set; }
+        public int authorId { get; set; }
+        public int publishingHouseId { get; set; }
         public bool status { get; set; }
     }
 }

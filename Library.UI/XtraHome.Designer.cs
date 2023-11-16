@@ -72,7 +72,7 @@
             // 
             btnCategories.Caption = "Categories";
             btnCategories.Id = 2;
-            btnCategories.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            btnCategories.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("btnCategories.ImageOptions.SvgImage");
             btnCategories.Name = "btnCategories";
             btnCategories.ItemClick += btnCategories_ItemClick;
             // 
@@ -80,35 +80,36 @@
             // 
             btnBooks.Caption = "Books";
             btnBooks.Id = 3;
-            btnBooks.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem2.ImageOptions.SvgImage");
+            btnBooks.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("btnBooks.ImageOptions.SvgImage");
             btnBooks.Name = "btnBooks";
+            btnBooks.ItemClick += btnBooks_ItemClick;
             // 
             // btnAuthors
             // 
             btnAuthors.Caption = "Authors";
             btnAuthors.Id = 4;
-            btnAuthors.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("A.ImageOptions.SvgImage");
+            btnAuthors.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("btnAuthors.ImageOptions.SvgImage");
             btnAuthors.Name = "btnAuthors";
             // 
             // btnPublishingHouses
             // 
             btnPublishingHouses.Caption = "Publishing Houses";
             btnPublishingHouses.Id = 5;
-            btnPublishingHouses.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem3.ImageOptions.SvgImage");
+            btnPublishingHouses.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("btnPublishingHouses.ImageOptions.SvgImage");
             btnPublishingHouses.Name = "btnPublishingHouses";
             // 
             // btnMembers
             // 
             btnMembers.Caption = "Members";
             btnMembers.Id = 6;
-            btnMembers.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("D.ImageOptions.SvgImage");
+            btnMembers.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("btnMembers.ImageOptions.SvgImage");
             btnMembers.Name = "btnMembers";
             // 
             // btnDeposits
             // 
             btnDeposits.Caption = "Deposits";
             btnDeposits.Id = 7;
-            btnDeposits.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem4.ImageOptions.SvgImage");
+            btnDeposits.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("btnDeposits.ImageOptions.SvgImage");
             btnDeposits.Name = "btnDeposits";
             btnDeposits.ItemClick += btnDeposits_ItemClick;
             // 
@@ -116,16 +117,16 @@
             // 
             btnEmailSettings.Caption = "E-mail Settings";
             btnEmailSettings.Id = 8;
-            btnEmailSettings.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
-            btnEmailSettings.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
+            btnEmailSettings.ImageOptions.Image = (Image)resources.GetObject("btnEmailSettings.ImageOptions.Image");
+            btnEmailSettings.ImageOptions.LargeImage = (Image)resources.GetObject("btnEmailSettings.ImageOptions.LargeImage");
             btnEmailSettings.Name = "btnEmailSettings";
             // 
             // btnSmsSettings
             // 
             btnSmsSettings.Caption = "Sms Settings";
             btnSmsSettings.Id = 9;
-            btnSmsSettings.ImageOptions.Image = (Image)resources.GetObject("barButtonItem6.ImageOptions.Image");
-            btnSmsSettings.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem6.ImageOptions.LargeImage");
+            btnSmsSettings.ImageOptions.Image = (Image)resources.GetObject("btnSmsSettings.ImageOptions.Image");
+            btnSmsSettings.ImageOptions.LargeImage = (Image)resources.GetObject("btnSmsSettings.ImageOptions.LargeImage");
             btnSmsSettings.Name = "btnSmsSettings";
             // 
             // ribbonPage1
@@ -177,6 +178,7 @@
             Name = "XtraHome";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Library System";
+            Load += XtraHome_Load;
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).EndInit();
             ResumeLayout(false);

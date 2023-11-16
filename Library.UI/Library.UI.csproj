@@ -11,9 +11,11 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.5.0" />
     <PackageReference Include="DevExpress.Win.Design" Version="22.2.3" />
+    <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Library.BusinessLayer\Library.BusinessLayer.csproj" />
     <ProjectReference Include="..\Library.DataLayer\Library.DataLayer.csproj" />
   </ItemGroup>
 

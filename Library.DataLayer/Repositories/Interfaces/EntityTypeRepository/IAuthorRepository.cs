@@ -10,5 +10,6 @@ namespace Library.DataLayer.Repositories.Interfaces.EntityTypeRepository
 {
     public interface IAuthorRepository:IBaseRepository<Author>
     {
+        bool CheckAuthortUses(int authorId);
     }
 }

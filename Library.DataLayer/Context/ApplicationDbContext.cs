@@ -21,7 +21,6 @@ namespace Library.DataLayer.Context
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<CategoryBook> CategoriesBooks { get; set; }
         public DbSet<Email> Email { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<PublishingHouse> PublishingHouses { get; set; }
@@ -30,7 +29,6 @@ namespace Library.DataLayer.Context
         {
 
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.Entity<CategoryBook>().HasNoKey();
 
             base.OnModelCreating(modelBuilder);
         }
