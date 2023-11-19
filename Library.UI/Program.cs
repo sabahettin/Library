@@ -22,7 +22,8 @@ namespace Library.UI
                 Container.Resolve<ICategoryService>(),
                 Container.Resolve<IEmailService>(),
                 Container.Resolve<IMemberService>(),
-                Container.Resolve<IPublishingHouseService>()
+                Container.Resolve<IPublishingHouseService>(),
+                Container.Resolve<ApplicationDbContext>()
                 ));
         }
 
@@ -59,6 +60,7 @@ namespace Library.UI
             builder.RegisterType<PublishingHouseRepository>().As<IPublishingHouseRepository>();
 
             builder.RegisterType<XtraHome>();
+
             return builder.Build();
         }
     }

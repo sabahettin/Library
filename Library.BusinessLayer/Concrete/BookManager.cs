@@ -9,6 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Library.BusinessLayer.Concrete
 {
@@ -38,7 +39,8 @@ namespace Library.BusinessLayer.Concrete
         }
         public void TDelete(Book entity)
         {
-            _table.Remove(entity);
+            entity.status = false;
+            //_table.Remove(entity);
             _dbContext.SaveChanges();
         }
         public Book TGet(int id)

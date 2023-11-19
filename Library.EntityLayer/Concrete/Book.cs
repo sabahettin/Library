@@ -22,5 +22,8 @@ namespace Library.EntityLayer.Concrete
         public int authorId { get; set; }
         public int publishingHouseId { get; set; }
         public bool status { get; set; }
+        public virtual Author Author { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual PublishingHouse PublishingHouse { get; set; }
     }
 }

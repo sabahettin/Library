@@ -12,5 +12,7 @@ namespace Library.EntityLayer.Concrete
         public Guid publishingHouseCode { get; set; }
         public string publishingHouseName { get; set; }
         public bool status { get; set; }
+        public virtual List<Book> Books { get; set; }
+
     }
 }

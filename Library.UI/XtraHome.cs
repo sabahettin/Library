@@ -1,4 +1,5 @@
 ﻿using Library.BusinessLayer.Abstract;
+using Library.DataLayer.Context;
 using Library.DataLayer.Repositories.Interfaces.EntityTypeRepository;
 
 namespace Library.UI
@@ -11,8 +12,9 @@ namespace Library.UI
         IEmailService _emailService;
         IMemberService _memberService;
         IPublishingHouseService _publishingHouseService;
+        ApplicationDbContext _context;
 
-        public XtraHome(IAuthorService authorService, IBookService bookService, ICategoryService categoryService, IEmailService emailService, IMemberService memberService, IPublishingHouseService publishingHouseService)
+        public XtraHome(IAuthorService authorService, IBookService bookService, ICategoryService categoryService, IEmailService emailService, IMemberService memberService, IPublishingHouseService publishingHouseService, ApplicationDbContext context)
         {
             InitializeComponent();
             _authorService = authorService;
@@ -21,6 +23,7 @@ namespace Library.UI
             _emailService = emailService;
             _memberService = memberService;
             _publishingHouseService = publishingHouseService;
+            _context = context;
         }
 
         private void btnDeposits_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -37,7 +40,7 @@ namespace Library.UI
 
         private void btnBooks_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraBook book = new XtraBook(_categoryService,_bookService, _authorService, _publishingHouseService);
+            XtraBook book = new XtraBook(_categoryService,_bookService, _authorService, _publishingHouseService, _context);
             book.MdiParent = this;
             book.Show();
         }

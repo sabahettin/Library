@@ -16,5 +16,7 @@ namespace Library.EntityLayer.Concrete
         [MaxLength(25)]
         [MinLength(3)]
         public string categoryName { get; set; }
+        public virtual List<Book> Books { get; set; }
+
     }
 }

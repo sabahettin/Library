@@ -15,5 +15,7 @@ namespace Library.EntityLayer.Concrete
         public string authorBiography { get; set; }
         public string authorPicture { get; set; }
         public bool status { get; set; }
+        public virtual List<Book> Books { get; set; }
+
     }
 }
